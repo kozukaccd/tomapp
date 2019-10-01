@@ -1,15 +1,3 @@
 <template>
-  <v-layout>
-    <v-flex class="text-center">
-      <img
-        src="/v.png"
-        alt="Vuetify.js"
-        class="mb-5"
-      >
-        <footer>
-            せやかて四輪駆動～～～～！！！♪
-        </footer>
-      </blockquote>
-    </v-flex>
-  </v-layout>
+    <v-card-title>新規会員登録フォーム(3分で完了)</v-card-title>
 </template>
