@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -25,11 +25,13 @@ export default {
   ** Global CSS
   */
   css: [
+      '~/assets/css/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+  { src: '~/plugins/vue-carousel', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -41,22 +43,38 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-webfontloader','@nuxtjs/dotenv',
   ],
+  webfontloader: {
+    google: {
+      families: ['Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',"sans-serif"]
+    }
+  },
+
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
-      primary: '#3f51b5',
-      secondary: '#2196f3',
-      accent: '#e91e63',
-      error: '#f44336',
-      warning: '#ff5722',
-      info: '#4caf50',
-      success: '#8bc34a'
-    }
+        themes: {
+        light:   {
+        primary: '#f44336',
+        secondary: '#4caf50',
+        accent: '#ff5722',
+        error: '#795548',
+        warning: '#ff9800',
+        info: '#00bcd4',
+        success: '#e91e63'
+        },
+        dark: {
+            primary: colors.blue.lighten3,
+        },
+        },
+    },
+
   },
   /*
   ** Build configuration
@@ -67,5 +85,7 @@ export default {
     */
     extend (config, ctx) {
     }
-  }
+  },
+
+
 }

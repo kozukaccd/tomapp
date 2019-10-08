@@ -2,3 +2,31 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+$body-font-family :'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3','sans-serif';
+
+
+// whatever font-family you want to useaaaaa
+//@import '~vuetify/src/stylus/main'
+
+.page-enter {
+    transform: translate(-60px, 0);
+    opacity: 0;
+}
+.page-enter-to {
+    opacity: 1;
+}
+.page-enter-active {
+    transition: all .5s 0s ease;
+}
+.page-leave {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+.page-leave-to {
+    transform: translate(60px, 0);
+    opacity: 0;
+}
+.page-leave-active {
+    transition: all .3s 0s ease;
+}

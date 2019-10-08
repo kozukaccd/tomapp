@@ -1,20 +1,21 @@
 <template>
-  <v-app dark>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
+  <v-app theme>
+    <v-content>
+      <v-container>
+        <v-layout  justify-center>
+            <h1 v-if="error.statusCode === 404">{{ pageNotFound }}</h1>
+            <h1 v-else>{{ otherError }}</h1>
+            <h1>エラーが発生しました。</h1>
+            <NuxtLink to="/">Topへ戻る</NuxtLink>
+        </v-layout>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
 export default {
-  layout: 'empty',
+  layout: 'default',
   props: {
     error: {
       type: Object,
