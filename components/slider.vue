@@ -1,54 +1,64 @@
 <template>
-<div>
-  <carousel
-    :perPageCustom="[[599,1],[959,2],[1263,3]]"
-    :autoplay="false"
-    :loop="true"
-    :autoplay-timeout="4000"
-    :centerMode="true"
-    :navigation-enabled="true"
-    :navigation-prev-label="'〈'"
-    :navigation-next-label="'〉'">
-
-    <slide v-for="item in items" v-bind:key="item.id">
-        <v-card >
-            <v-card-title>{{item.title}}</v-card-title>
-            <v-card-text>{{item.text}}</v-card-text>
-                <v-card-actions>
-                    <v-btn :to="{name:'vote-entryNumber',params:{entryNumber:item.id}}" nuxt color="secondary" block >投票する</v-btn>
-                </v-card-actions>
+  <div id="entries">
+    <carousel
+      :perPageCustom="[[599, 1], [959, 2], [1263, 4]]"
+      :autoplay="true"
+      :loop="true"
+      :autoplay-timeout="3000"
+      :centerMode="true"
+      :navigation-enabled="true"
+      :navigation-prev-label="'〈'"
+      :navigation-next-label="'〉'"
+      :autoplayHoverPause="true"
+      :speed="800"
+      :spacePadding="20"
+    >
+      <slide v-for="item in sortedItems" v-bind:key="item.id">
+        <v-card>
+          <v-card-title>{{ item.id }}</v-card-title>
+          <v-card-title>{{ item.title }}</v-card-title>
+          <v-card-text>{{ item.text }}</v-card-text>
+          <v-card-actions>
+            <v-layout justify-center>
+              <v-btn
+                :to="{
+                  name: 'vote-entryNumber',
+                  params: { entryNumber: item.id }
+                }"
+                nuxt
+                color="info"
+              >
+                <v-icon>mdi-vote</v-icon>
+              </v-btn>
+            </v-layout>
+          </v-card-actions>
         </v-card>
-    </slide>
-
-  </carousel>
-
-</div>
-
+      </slide>
+    </carousel>
+  </div>
 </template>
 
 <script>
-import Carousel from 'vue-carousel/src/Carousel.vue'
-import Slide from 'vue-carousel/src/Slide.vue'
+import Carousel from "vue-carousel/src/Carousel.vue";
+import Slide from "vue-carousel/src/Slide.vue";
+import entries from "../assets/entries.json";
 export default {
-    data: function() {
-        return {
-          items:[
-            {id:1,title:"AAA", text:"aaaaaaaaaaa"},
-            {id:2,title:"BBB", text:"bbbbbbbbbbb"},
-            {id:3,title:"CCC", text:"ccccccccccc"},
-            {id:4,title:"DDD", text:"ddddddddddd"},
-            {id:5,title:"EEE", text:"eeeeeeeeeee"},
-            {id:6,title:"FFF", text:"fffffffffff"},
-            {id:7,title:"GGG", text:"ggggggggggg"},
-            {id:8,title:"HHH", text:"hhhhhhhhhhh"},
-            {id:9,title:"III", text:"iiiiiiiiiii"},
-        ]
+  data: function() {
+    return {
+      sortedItems: "",
+      items: entries
+    };
+  },
 
-        }},
+  created: function() {
+    this.sortedItems = entries.slice().sort(function() {
+      return 0.5 - Math.random();
+    });
+  },
 
   components: {
     Carousel,
     Slide
   }
-}
+};
 </script>

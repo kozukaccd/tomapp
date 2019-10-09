@@ -43,7 +43,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    'nuxt-webfontloader','@nuxtjs/dotenv',
+    'nuxt-webfontloader',
   ],
   webfontloader: {
     google: {
@@ -88,4 +88,26 @@ export default {
   },
 
 
+}
+const pkg = require('./package')
+// 以下、追加
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+// ここまで
+
+module.exports = {
+  // ...
+  /*
+  ** Build configuration
+  */
+ build: {
+   /*
+   ** you can extend webpack config here
+   */
+  extend(config, ctx) {
+    // ...
+    // 以下、追加
+    config.plugins.push(new HardSourceWebpackPlugin())
+    // ここまで
+  }
+ }
 }
