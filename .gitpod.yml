@@ -1,3 +1,6 @@
 vscode:
   extensions:
     - octref.vetur@0.22.3:Mwv282XMv00pVVOQeZ6Ngg==
+    
+tasks:
+  - command: "npm install"
