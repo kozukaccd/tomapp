@@ -4,8 +4,7 @@
         ID is {{ $route.params.entryNumber }}
         <nuxt-link to="/">Topへ戻る</nuxt-link>
         <nuxt-link to="/entries">エントリー一覧へ戻る</nuxt-link>
-        <v-card width="400px">
-
+        <v-card>
             <v-card-title>{{items[$route.params.entryNumber].id}}</v-card-title>
             <v-card-title>{{items[$route.params.entryNumber].title}}</v-card-title>
             <v-card-text>{{items[$route.params.entryNumber].text}}</v-card-text>
