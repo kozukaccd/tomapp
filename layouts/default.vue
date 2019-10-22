@@ -3,7 +3,7 @@
     <v-app-bar app color="primary" dark max-height="60px">
       <v-toolbar-title class="headline text-uppercase">
         <span class="v-toolbar-title bold"
-          >JMoF イラストコンテスト2020 投票フォーム</span
+          ><v-icon>mdi-palette</v-icon> JMoF イラストコンテスト2020 投票フォーム</span
         >
       </v-toolbar-title>
       <v-spacer></v-spacer>
