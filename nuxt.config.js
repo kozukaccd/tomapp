@@ -43,7 +43,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    'nuxt-webfontloader',
+    'nuxt-webfontloader','@nuxtjs/axios'
   ],
   webfontloader: {
     google: {
@@ -86,6 +86,9 @@ export default {
     extend (config, ctx) {
     }
   },
+
+  axios: {
+  }
 
 
 }

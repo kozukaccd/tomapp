@@ -12,6 +12,7 @@
     "format": "prettier --write './*/*.vue'"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.7.1",
     "@nuxtjs/dotenv": "^1.4.1",
     "firebase": "^7.0.0",
     "firebase-tools": "^7.4.0",

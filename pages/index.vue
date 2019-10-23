@@ -96,7 +96,17 @@
       </v-dialog>
 
     </v-container>
+ <ul class="resultItem" v-for="entry in results" :key="entry.id">
+   <li>{{entry.id}}</li>
+   <li>{{entry.name}}</li>
+   <li>{{entry.title}}</li>
+   <li>{{entry.captions}}</li>
+   <li>{{entry.filename}}</li>
+  </ul>
+
   </div>
+
+  
 </template>
 
 <script>
@@ -110,9 +120,17 @@ export default {
       items: entries,
       currentItem:null,
       dialog: false,
+      results:[],
     };
   },
-
+  
+  async asyncData({ app }) {
+    const entries = await app.$axios.$get("https://script.googleusercontent.com/macros/echo?user_content_key=hjhQ7rDhgeBE1WIwSXJdGQyu7tFgoNwCurjzsUzU67ILMbZZwJHNW-TiMQnTjeRtoERqVOckj9NagCN4jUnCCQVm-ZANH0dWm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnINqPvbuDU9swNJSGSkAQwdPTUkhX2Qv6TSiUiKM--2QfDY4-G96vMQ-P6jUs2z88UWY2nZ7HPw5&lib=MHChhK3vTrP4kAeUmMIpB0FnFCWH9vLiW")
+    return {
+      results: entries
+    }
+  }
+,
   created: function() {
     this.sortedItems = entries.slice().sort(function() {
       return 0.5 - Math.random();
@@ -130,6 +148,8 @@ methods: {
   components: {
     Carousel,
     Slide
-  }
+  },
+
+  
 };
 </script>
