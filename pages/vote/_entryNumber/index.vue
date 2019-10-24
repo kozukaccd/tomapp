@@ -11,7 +11,7 @@
                 <v-card-title>{{items[$route.params.entryNumber].id}}{{items[$route.params.entryNumber].title}}</v-card-title>
               </v-col>
             </v-row>
-            <v-img 
+            <v-img
             v-bind:src="imagePath(items[$route.params.entryNumber].src)"
             aspect-ratio="1.61"
             ></v-img>
@@ -22,7 +22,6 @@
             </v-row>
           </v-container>
         </v-card>
-
   </div>
 </template>
 
