@@ -24,7 +24,7 @@
           <v-card>
             <v-img
             class="white--text align-end"
-            v-bind:src="imagePath(item.src)"
+            v-bind:src="imagePath(item.filename)"
             gradient="to top, rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0)"
             aspect-ratio="1.61"
             @click.stop="openDialog(item)">
@@ -63,33 +63,32 @@
         </v-col>
       </v-row>
 
-        <v-dialog v-model="dialog" v-if="currentItem" max-width="500px">
+        <v-dialog v-model="dialog" v-if="currentItem" max-width="400px">
           <v-card>
             <v-container>
-              <v-row>
-                      <v-col>
-                        <v-img
-                        v-bind:src="imagePath(currentItem.src)"
-                        aspect-ratio="1.61"
-                        ></v-img>
-                      </v-col>
-              </v-row>
                 <v-row>
-                    <v-col>
+                    <v-col class="d-flex justify-center" style="padding-bottom:0;">
                         <v-card-title
                         >No.{{ currentItem.id }} - {{ currentItem.title }}</v-card-title
                         >
                     </v-col>
                 </v-row>
-                <v-row>
-                    <v-col>
+
+              <v-row>
+                      <v-col style="padding-bottom:0;padding-top:0">
+                        <v-img
+                        v-bind:src="imagePath(currentItem.filename)"
+                        aspect-ratio="1.61"
+                        ></v-img>
+                      </v-col>
+              </v-row>
+                <v-row style="padding-top:0;padding-bottom:0;">
+                    <v-col style="padding-top:0;padding-bottom:0;">
                         <v-card-text>{{ currentItem.captions }}</v-card-text>
                     </v-col>
                 </v-row>
-
                 <v-divider></v-divider>
-
-                <v-row style="margin-top:10px;">
+                <v-row>
                 <v-col class="d-flex justify-center">
                     <v-btn color="info" text @click="dialog = false" class="text-center" style="margin-right:10px;"
                     >閉じる</v-btn>
@@ -126,8 +125,6 @@
    <li>{{entry.filename}}</li>
   </ul>
 !-->
-
-
 
   </div>
 </template>
@@ -173,7 +170,7 @@ export default {
 methods: {
     imagePath: function (filename) {
 /*      return require("@/static/images/" + filename) */
-      return require("@/static/images/thumb.jpg")
+      return require("@/static/images/"+filename)
     },
     openDialog(item) {
       this.currentItem = item
